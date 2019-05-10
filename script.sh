@@ -18,10 +18,15 @@ mkdir MarcoAssuncao/processados_json/indexados
 
 # baixando do git e movendo-os para seus respectivos diretórios
 cd MarcoAssuncao
-wget https://raw.githubusercontent.com/marcoaureliodeassuncao/Challenge/master/crypto_scrap2.py
-wget https://raw.githubusercontent.com/marcoaureliodeassuncao/Challenge/master/scrap_dolar.py
-mv crypto_scrap2.py bin/crypto_scrap2.py
-mv scrap_dolar.py bin/scrap_dolar.py
+wget https://github.com/marcoaureliodeassuncao/Challenge/blob/master/MarcoAssuncao.zip?raw=true
+unzip MarcoAssuncao.zip
+mv MarcoAssuncao/crypto_scrap2.py ~/MarcoAssuncao/bin/crypto_scrap2.py
+mv MarcoAssuncao/scrap_dolar.py ~/MarcoAssuncao/bin/scrap_dolar.py
+mv MarcoAssuncao/scala_dir_2.11-0.1-SNAPSHOT.jar ~/MarcoAssuncao/bin/scala_dir_2.11-0.1-SNAPSHOT.jar
+mv MarcoAssuncao/put_to_hdfs.sh ~/MarcoAssuncao/bin/put_to_hdfs.sh
+mv MarcoAssuncao/submit.sh ~/MarcoAssuncao/bin/submit.sh
+mv MarcoAssuncao/get_to_hdfs.sh ~/MarcoAssuncao/get_to_hdfs.sh
+rm ~/MarcoAssuncao/MarcoAssuncao
 
 # instalando pacotes python
 sudo pip install bs4
@@ -33,3 +38,4 @@ crontab -l | { cat; echo "*/20 * * * * python ~/MarcoAssuncao/scrap_dolar.py"; }
 crontab -l | { cat; echo "*/20 * * * * python ~/MarcoAssuncao/crypto_scrap.py"; } | crontab -
 crontab -l | { cat; echo "*/21 * * * * ~/MarcoAssuncao/put_to_hdfs.sh"; } | crontab -
 crontab -l | { cat; echo "*/22 * * * * ~/MarcoAssuncao/submit.sh"; } | crontab -
+crontab -l | { cat; echo "*/23 * * * * ~/MarcoAssuncao/get_to_hdfs.sh"; } | crontab -
