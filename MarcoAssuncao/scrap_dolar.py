@@ -61,7 +61,7 @@ if __name__ == '__main__':
 	html = scrap.html(url)
 
 	with open('scrapDolar.csv','a+') as csvfile:
-		f_size = os.path.getsize('scrapDolar.csv')
+		f_size = os.path.getsize('/crawler_dolar/scrapDolar.csv')
 		csvwriter = csv.writer(csvfile,delimiter=';')
 		if f_size == 0:
 			csvwriter.writerow(['Id','Coin', 'Currency', 'Change', 'Percentual', 'Timestamp'])

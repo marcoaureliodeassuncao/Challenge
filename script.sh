@@ -20,14 +20,16 @@ mkdir MarcoAssuncao/processados_json/indexados
 cd MarcoAssuncao
 wget https://raw.githubusercontent.com/marcoaureliodeassuncao/Challenge/master/crypto_scrap2.py
 wget https://raw.githubusercontent.com/marcoaureliodeassuncao/Challenge/master/scrap_dolar.py
-mv crypto_scrap2.py crawler_crypto/crypto_scrap2.py
-mv scrap_dolar.py crawler_dolar/scrap_dolar.py
+mv crypto_scrap2.py bin/crypto_scrap2.py
+mv scrap_dolar.py bin/scrap_dolar.py
 
 # instalando pacotes python
 sudo pip install bs4
 sudo pip install lxml
+sudo pip install itertools
 
 # fazendo agendamento no crontab
 crontab -l | { cat; echo "*/20 * * * * python ~/MarcoAssuncao/scrap_dolar.py"; } | crontab -
 crontab -l | { cat; echo "*/20 * * * * python ~/MarcoAssuncao/crypto_scrap.py"; } | crontab -
-crontab -l | { cat; echo "*/21 * * * * ~/put_to_hdfs.sh"; } | crontab -
+crontab -l | { cat; echo "*/21 * * * * ~/MarcoAssuncao/put_to_hdfs.sh"; } | crontab -
+crontab -l | { cat; echo "*/22 * * * * ~/MarcoAssuncao/submit.sh"; } | crontab -
