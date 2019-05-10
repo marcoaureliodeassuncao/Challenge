@@ -3,6 +3,7 @@ from datetime import datetime
 import requests
 import csv
 import os
+import itertools
 
 class ScrapDolar:
 	def page(self):
@@ -44,6 +45,11 @@ class ScrapDolar:
 			percent = span.find('i',{'class':'parentheses redFont pid-2103-pcp'})
 		return percent.string.strip()
 
+	def id_gen(self):
+		counter = itertools.count()
+		a = next(counter)
+		return a
+
 	def date(self,p):
 		x = p
 		date = datetime.now()
@@ -58,7 +64,7 @@ if __name__ == '__main__':
 		f_size = os.path.getsize('scrapDolar.csv')
 		csvwriter = csv.writer(csvfile,delimiter=';')
 		if f_size == 0:
-			csvwriter.writerow(['Coin', 'Currency', 'Change', 'Percentual', 'Timestamp'])
-			csvwriter.writerow([scrap.name(html),scrap.value(html),scrap.change(html),scrap.percent(html),scrap.date(html)])
+			csvwriter.writerow(['Id','Coin', 'Currency', 'Change', 'Percentual', 'Timestamp'])
+			csvwriter.writerow([scrap.id_gen(),scrap.name(html),scrap.value(html),scrap.change(html),scrap.percent(html),scrap.date(html)])
 		else:
-			csvwriter.writerow([scrap.name(html),scrap.value(html),scrap.change(html),scrap.percent(html),scrap.date(html)])
+			csvwriter.writerow([scrap.id_gen(),scrap.name(html),scrap.value(html),scrap.change(html),scrap.percent(html),scrap.date(html)])

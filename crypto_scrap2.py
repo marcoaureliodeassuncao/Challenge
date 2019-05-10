@@ -42,8 +42,8 @@ def dados_completos():
 
 #gera um arquivo csv com as informações capturadas dando append a cada vez que roda o código
 def gera_csv():
-	with open('crypto_file_Marco_2019-05-02.csv','a+') as csvfile:
-		f_size = os.path.getsize('cryptocoins_scrap.csv')
+	with open('scrapCrypto.csv','a+') as csvfile:
+		f_size = os.path.getsize('scrapCrypto.csv')
 		if f_size == 0:
 			csvwriter = csv.writer(csvfile,delimiter=';')
 			for linha in dados_completos():
