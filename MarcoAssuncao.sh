@@ -26,7 +26,7 @@ mv ~/MarcoAssuncao/Marco_Assuncao/scrap_dolar.py ~/MarcoAssuncao/bin/scrap_dolar
 mv ~/MarcoAssuncao/Marco_Assuncao/scala_dir_2.11-0.1-SNAPSHOT.jar ~/MarcoAssuncao/bin/scala_dir_2.11-0.1-SNAPSHOT.jar
 mv ~/Marcoassuncao/Marco_Assuncao/put_to_hdfs.sh ~/MarcoAssuncao/bin/put_to_hdfs.sh
 mv ~/MarcoAssuncao/Marco_Assuncao/submit.sh ~/MarcoAssuncao/bin/submit.sh
-mv ~MarcoAssuncao/Marco_Assuncao/get_to_hdfs.sh ~/MarcoAssuncao/get_to_hdfs.sh
+mv ~/MarcoAssuncao/Marco_Assuncao/get_to_hdfs.sh ~/MarcoAssuncao/bin/get_to_hdfs.sh
 rm -rf ~/MarcoAssuncao/Marco_Assuncao
 
 # instalando pacotes python
@@ -35,8 +35,8 @@ sudo pip install lxml
 sudo pip install itertools
 
 # fazendo agendamento no crontab
-crontab -l | { cat; echo "*/20 * * * * ~/MarcoAssuncao/crawler.sh"; } | crontab -
-crontab -l | { cat; echo "*/21 * * * * ~/MarcoAssuncao/put_to_hdfs.sh"; } | crontab -
-crontab -l | { cat; echo "*/22 * * * * ~/MarcoAssuncao/submit.sh"; } | crontab -
-crontab -l | { cat; echo "*/23 * * * * ~/MarcoAssuncao/get_to_hdfs.sh"; } | crontab -
+crontab -l | { cat; echo "*/20 * * * * ~/MarcoAssuncao/bin/crawler.sh"; } | crontab -
+crontab -l | { cat; echo "*/21 * * * * ~/MarcoAssuncao//bin/put_to_hdfs.sh"; } | crontab -
+crontab -l | { cat; echo "*/22 * * * * ~/MarcoAssuncao/bin/submit.sh"; } | crontab -
+crontab -l | { cat; echo "*/23 * * * * ~/MarcoAssuncao/bin/get_to_hdfs.sh"; } | crontab -
 
